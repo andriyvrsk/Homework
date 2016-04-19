@@ -29,8 +29,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(@RequestParam String name) {
-		personDao.save(new Person(name));
+	public String save(@RequestParam String name, String email, String password) {
+		personDao.save(new Person(null, name, email, password));
 		return "redirect:/users";
 	}
 	
