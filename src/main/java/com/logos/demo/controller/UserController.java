@@ -24,15 +24,16 @@ public class UserController {
 
 		model.addAttribute("context", request.getContextPath());
 		model.addAttribute("personList", personDao.findAll());
-		
+
 		return "users";
 	}
-	
+
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(@RequestParam String name, String email, String password) {
-		personDao.save(new Person(null, name, email, password));
+	public String save(@RequestParam(name = "name") String name,
+			@RequestParam(name = "email") String email,
+			@RequestParam(name = "password") String password) {
+		personDao.save(new Person(name, email, password));
 		return "redirect:/users";
 	}
-	
 
 }

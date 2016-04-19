@@ -24,16 +24,14 @@ public class Person {
 	private String email;
 	private String password;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "person_role", joinColumns = { @JoinColumn(name = "personId") },
-		inverseJoinColumns = {@JoinColumn(name = "roleId") })
+	@JoinTable(name = "person_role", joinColumns = { @JoinColumn(name = "personId") }, inverseJoinColumns = { @JoinColumn(name = "roleId") })
 	private List<Role> roles;
 
 	public Person() {
 	}
 
-	public Person(Long id, String name, String email, String password) {
+	public Person(String name, String email, String password) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
@@ -81,8 +79,8 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", roles="
-				+ roles + "]";
+		return "Person [id=" + id + ", name=" + name + ", email=" + email
+				+ ", password=" + password + ", roles=" + roles + "]";
 	}
 
 }

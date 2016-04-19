@@ -20,7 +20,7 @@ public abstract class BaseDaoImpl<E, N extends Number> implements BaseDao<E, N> 
 	}
 
 	@PersistenceContext(name = "logos")
-	EntityManager entityManager;
+	protected EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
 	@Transactional
